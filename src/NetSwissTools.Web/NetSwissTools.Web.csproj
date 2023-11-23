@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <Title>NetSwissTools.Web</Title>
+    <Authors>Jonathan Vale</Authors>
+    <Company>KennyMack</Company>
+    <Description>A collection of classes and tools to improve the web development with .NET</Description>
+    <PackageIcon>NetSwissToolsIcon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/KennyMack/NetSwissTools.Web</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <IncludeSymbols>False</IncludeSymbols>
+    <PackageTags>Swiss;Tools;SwissArmy;Common;Implementations;Validation;Exception;Task;Empty;Net Tools;Web;Controller;Action</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1701;1702;1307</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1701;1702;1307</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\NetSwissTools.Web.old\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\..\NetSwissTools.Web.old\images\NetSwissToolsIcon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetSwissTools" Version="1.0.5" />
+  </ItemGroup>
+
+</Project>
