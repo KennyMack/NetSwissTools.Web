@@ -14,7 +14,7 @@ namespace NetSwissTools.Web.Mvc.Results
             Data = data;
         }
 
-        public SwissOkResult(HttpStatusCode statusCode, object data)
+        public SwissOkResult(object data, HttpStatusCode statusCode)
         {
             ResponseCode = (int)statusCode;
             Data = data;

@@ -278,70 +278,70 @@ namespace NetSwissTools.Web.Mvc
         }
 
         protected virtual SwissCreatedResult<T> Created<T>(string id, T entity) =>
-            new(id, entity);
+            ControllerResults.Created(id, entity);
 
         protected virtual SwissCreatedResult<T> Created<T>(string resourceUrl, string id, T entity) =>
-            new(resourceUrl, id, entity);
+            ControllerResults.Created(resourceUrl, id, entity);
 
         protected virtual SwissUpdatedResult<T> Updated<T>(string id, T entity) =>
-            new(id, entity);
+            ControllerResults.Updated(id, entity);
 
         protected virtual SwissUpdatedResult<T> Updated<T>(string resourceUrl, string id, T entity) =>
-            new(resourceUrl, id, entity);
+            ControllerResults.Updated(resourceUrl, id, entity);
 
         protected virtual SwissOkResult RequestOK(object result) =>
-            new(result);
+            ControllerResults.RequestOK(result);
 
         protected virtual SwissOkResult RequestOK(object result, HttpStatusCode httpStatusCode) =>
-            new(httpStatusCode, result);
+            ControllerResults.RequestOK(result, httpStatusCode);
 
         protected virtual SwissBadRequestResult BadRequest(object data, ModelException[] errors) =>
-            new(data, errors);
+            ControllerResults.BadRequest(data, errors);
 
         protected virtual SwissBadRequestResult BadRequest(object data, ModelException error) =>
-            new(data, error);
+            ControllerResults.BadRequest(data, error);
 
         protected virtual SwissBadRequestResult BadRequest(ModelException error) =>
-            new(error);
+            ControllerResults.BadRequest(error);
 
         protected virtual SwissBadRequestResult BadRequest(ModelException[] errors) =>
-            new(errors);
+            ControllerResults.BadRequest(errors);
 
         protected virtual SwissBadRequestResult UnprocessableEntity(object data, ModelException[] errors) =>
-            new(data, errors);
+            ControllerResults.UnprocessableEntity(data, errors);
 
         protected virtual SwissBadRequestResult UnprocessableEntity(object data, ModelException error) =>
-            new(data, error);
+            ControllerResults.UnprocessableEntity(data, error);
 
         protected virtual SwissBadRequestResult UnprocessableEntity(ModelException error) =>
-            new(error);
+            ControllerResults.UnprocessableEntity(error);
 
         protected virtual SwissBadRequestResult UnprocessableEntity(ModelException[] errors) =>
-            new(errors);
+            ControllerResults.UnprocessableEntity(errors);
 
         protected virtual SwissNotFoundResult NotFound(ModelException error) =>
-            new(error);
+            ControllerResults.NotFound(error);
 
         protected new virtual SwissNotFoundResult NotFound() =>
-            new();
+            ControllerResults.NotFound();
 
         protected virtual SwissNotFoundResult Unauthorized(ModelException error) =>
-            new(error);
+            ControllerResults.Unauthorized(error);
 
         protected new virtual SwissNotFoundResult Unauthorized() =>
-            new();
+            ControllerResults.Unauthorized();
 
         protected virtual SwissMovedPermanently MovedPermanently(string id) =>
-            new(id);
+            ControllerResults.MovedPermanently(id);
 
         protected virtual SwissMovedPermanently MovedPermanently(string id, ModelException error) =>
-            new(id, error);
+            ControllerResults.MovedPermanently(id, error);
 
         protected virtual SwissMovedPermanently MovedPermanently(string resourceUrl, string id) =>
-            new(resourceUrl, id);
+            ControllerResults.MovedPermanently(resourceUrl, id);
 
         protected virtual SwissMovedPermanently MovedPermanently(string resourceUrl, string id, ModelException error) =>
-            new(resourceUrl, id, error);
+            ControllerResults.MovedPermanently(resourceUrl, id, error);
 
     }
 }

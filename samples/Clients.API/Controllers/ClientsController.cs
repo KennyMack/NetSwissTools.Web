@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NetSwissTools.Web.Mvc;
+using NetSwissTools.Web.Mvc.Helpers;
 using NetSwissTools.Web.Mvc.Results;
 using System;
 using System.Net;
@@ -12,21 +13,23 @@ namespace Clients.API.Controllers
     [ApiVersion("1")]
     public class ClientsController : SwissControllerApi
     {
-        public ClientsController(ILogger<ClientsController> logger)
+        ClientService _ClientService;
+        public ClientsController(ILogger<ClientsController> logger,
+            ClientService clientService)
         {
+            _ClientService = clientService;
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(Client client)
         {
-            lock (MemoryStore.Clients)
-            {
-                client.Id = Guid.NewGuid();
+            if (!ModelState.IsValid)
+                return base.BadRequest(ModelState);
 
-                MemoryStore.Clients.Add(client);
-            }
-            await Task.Delay(1000);
-            return base.Created(client.Id.ToString(), client);
+            await Task.Delay(1);
+            var created = _ClientService.Add(client);
+
+            return this.CreatedResultOperation(created.Id.ToString(), created, _ClientService);
         }
 
         [HttpPost("Pending")]
@@ -68,6 +71,10 @@ namespace Clients.API.Controllers
                 return RequestOK(MemoryStore.Clients);
             }
         }
+
+        [HttpGet("page/{page}/size/{pageSize}")]
+        public async Task<IActionResult> GetListPagedAsync([FromRoute] int page, [FromRoute] int pageSize, CancellationToken cancellation) =>
+            await this.GetAllPagedAsync(cancellation, _ClientService, page, pageSize);
 
         [HttpGet("{id}")]
         public ActionResult<Client> GetById(Guid id)
